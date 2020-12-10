@@ -1,6 +1,6 @@
 #!/bin/bash
 
-COMMIT_RANGE=$(git rev-parse origin/master)...$(git rev-parse HEAD)
+COMMIT_RANGE=$(git rev-parse origin/master~1)...$(git rev-parse HEAD)
 nondextests=$(git diff --name-status --diff-filter=AM $COMMIT_RANGE | grep /test/ | sed -e 's;.*test/java/;;' -e 's/.java//' -e 's;/;.;g')
 
 if [ ! -z $nondextests ]
